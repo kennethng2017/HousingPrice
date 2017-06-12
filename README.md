@@ -2,4 +2,4 @@
 
 Steps:
 
-1. Go to explore_data.r to cleanse the data.
+1. open the complete_data.Rdata file to begin modeling the data.
