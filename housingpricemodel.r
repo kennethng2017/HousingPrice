@@ -8,7 +8,7 @@ run a Linear R on below and send me results. Use 60 Training and 40 Test. Do Ran
 library(caret)
 
 
-
+set.seed(1)
 
 Rows <- createDataPartition(classes,
 + p = (100/1459.0),
