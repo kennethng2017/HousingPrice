@@ -4,7 +4,6 @@ library(corrplot)
 library(ggplot2)
 library(reshape2)
 
-
 #set directory
 setwd("~/documents/housingprice")
 
@@ -14,8 +13,8 @@ testhome <- read.csv("testhome.csv")
 
 #change some variable into factor
 name <- c("MSSubClass","OverallQual", 
-           "OverallCond",
-           "GarageYrBlt")
+          "OverallCond",
+          "GarageYrBlt")
 trainhome[,name] <- lapply(trainhome[,name] , factor)
 
 #add a new column call "SalePrice" in testhome
@@ -170,7 +169,7 @@ ggplot(data_combined, aes(x= GarageYrBlt)) +
 
 data_combined$MSSubClass[is.na(data_combined$MSSubClass)]<- "20"
 
-DF <- c(1380)
+DF <- c(935, 1299, 1380)
 
 data_combined <- data_combined[-DF,]
 
@@ -218,7 +217,7 @@ trainnumber <- data.frame(lapply(trainnumber, as.numeric))
 
 
 #find correlation and remove correlation variables
-train_train <- trainnumber[1:1458,]
+train_train <- trainnumber[1:1459,]
 
 correlations <- cor(train_train)
 
@@ -226,15 +225,13 @@ corrplot(correlations, order = "hclust")
 
 highCorr <- findCorrelation(correlations, cutoff = .65)
 
-
 trainnumber$Id <- NULL
 
 #merge trainnumber and train_fac
-trainnumber$Id <- rep(1:2918)
-train_fac$Id <- rep(1:2918)
+trainnumber$Id <- rep(1:2916)
+train_fac$Id <- rep(1:2916)
 
 train_update <- merge(trainnumber, train_fac, by = "Id")
 train_update <- train_update[, -1]
 
 save(data_combined, train_update, file = "prepredata_version2.Rdata" )
-

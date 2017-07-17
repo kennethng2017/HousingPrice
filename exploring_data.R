@@ -44,9 +44,8 @@ propmiss <- function(dataframe) {
 }
 
 #select all numeric into a dataframe
-nums <- !sapply(data_combined, is.factor)
-train_int <- data_combined[, nums]
-
+train_int <- data_combined  %>%
+  select_if(is.integer)
 
 #select all factor into another table
 train_fac <- data_combined %>%
