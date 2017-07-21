@@ -2,4 +2,4 @@
 
 Steps:
 
-1. open the complete_data.Rdata file to begin modeling the data.
+1. open xgboost.r for complete work
